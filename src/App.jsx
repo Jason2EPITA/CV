@@ -1,109 +1,87 @@
-import { useEffect, useState } from "react";
+// App.jsx
+import { useEffect, useState, useRef } from "react";
+import AvatarRoom from "./components/AvatarRoom";
+import AvatarCV from "./components/AvatarCV";
 
 export default function App() {
-  const [pdfReady, setPdfReady] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [ready, setReady] = useState(false);
+  const [cvVisible, setCvVisible] = useState(false);
+
+  const cvSectionRef = useRef(null);
+
   useEffect(() => {
-    // petit delay pour éviter un flash vide sur certains navigateurs
-    const t = setTimeout(() => setPdfReady(true), 200);
-    return () => clearTimeout(t);
+    if (ready) {
+      const timer = setTimeout(() => setLoading(false), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [ready]);
+
+  // Observer pour déclencher AvatarCV uniquement quand on scrolle
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setCvVisible(true); // Monte la scène AvatarCV
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    if (cvSectionRef.current) {
+      observer.observe(cvSectionRef.current);
+    }
+
+    return () => {
+      if (cvSectionRef.current) observer.unobserve(cvSectionRef.current);
+    };
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
-      {/* Hero */}
-      <header className="relative overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 opacity-20 pointer-events-none"
-             style={{
-               background:
-                 "radial-gradient(60rem 30rem at 20% -10%, #1d4ed8 10%, transparent 50%), radial-gradient(50rem 25rem at 120% 10%, #0ea5e9 10%, transparent 50%)"
-             }} />
-        <div className="mx-auto max-w-6xl px-6 py-16 relative">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <div>
-              <p className="text-xs uppercase tracking-widest text-sky-400/80">
-                Diplômé EPITA — majeure SCIA
-              </p>
-              <h1 className="mt-2 text-3xl md:text-5xl font-semibold">
-                Jason Perez
-              </h1>
-              <p className="mt-3 text-lg md:text-xl text-slate-300">
-                Software Engineer — AI &amp; Data
-              </p>
-              <div className="mt-5 flex flex-wrap gap-3">
-                <a
-                  className="rounded-xl px-4 py-2 bg-sky-500 hover:bg-sky-400 transition"
-                  href="/JasonPerezCV.pdf" target="_blank" rel="noreferrer"
-                >
-                  Ouvrir le CV (PDF)
-                </a>
-                <a
-                  className="rounded-xl px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-white/10"
-                  href="https://github.com/Jason2EPITA" target="_blank" rel="noreferrer"
-                >
-                  Voir mes projets GitHub
-                </a>
-                <a
-                  className="rounded-xl px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-white/10"
-                  href="mailto:perezjason@live.fr"
-                >
-                  Me contacter
-                </a>
-              </div>
-            </div>
-            <div className="hidden md:block">
-              {/* badge simple style EPITA */}
-              <div className="px-4 py-2 rounded-xl border border-sky-500/30 bg-sky-500/10 text-sky-200">
-                EPITA • SCIA
-              </div>
+    <div className="min-h-screen relative">
+      {/* Loader */}
+      {loading && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0f172a] text-white text-4xl font-bold">
+          <div className="text-center space-y-4">
+            <div className="text-5xl font-extrabold">Jason’s Portfolio</div>
+            <div className="flex justify-center space-x-2 text-lg font-medium opacity-80">
+              <span className="animate-bounce">L</span>
+              <span className="animate-bounce delay-100">o</span>
+              <span className="animate-bounce delay-200">a</span>
+              <span className="animate-bounce delay-300">d</span>
+              <span className="animate-bounce delay-400">i</span>
+              <span className="animate-bounce delay-500">n</span>
+              <span className="animate-bounce delay-600">g</span>
+              <span className="animate-bounce delay-700">…</span>
             </div>
           </div>
         </div>
-      </header>
+      )}
 
-      {/* Aperçu PDF */}
-      <main className="mx-auto max-w-6xl px-6 py-10">
-        <h2 className="text-xl font-medium mb-4">Aperçu rapide du CV</h2>
-        <div className="rounded-2xl overflow-hidden border border-white/10 bg-slate-900">
-          {pdfReady ? (
-            <object
-              data="/JasonPerezCV.pdf#view=FitH"
-              type="application/pdf"
-              className="w-full h-[80vh]"
-            >
-              <div className="p-6 text-slate-300">
-                Votre navigateur ne peut pas afficher l’aperçu PDF.
-                <a className="text-sky-400 underline ml-2" href="/JasonPerezCV.pdf" target="_blank" rel="noreferrer">
-                  Ouvrir le CV dans un nouvel onglet
-                </a>
-              </div>
-            </object>
-          ) : (
-            <div className="h-[80vh] grid place-items-center text-slate-400">
-              Chargement de l’aperçu…
-            </div>
-          )}
+      {/* Section 1 */}
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen">
+        <div className="flex flex-col justify-center items-start p-10 bg-[#dcdcff]">
+          <p className="text-lg text-slate-700">Hello, my name is</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-900">
+            Jason Perez
+          </h1>
+          <h2 className="text-3xl md:text-4xl font-semibold text-slate-800 mt-2">
+            I am a Software Engineer.
+          </h2>
+          <p className="mt-4 text-slate-600">AI & Data • EPITA (SCIA)</p>
         </div>
-
-        {/* Liens utiles */}
-        <div className="mt-8 grid sm:grid-cols-3 gap-4">
-          <a className="rounded-xl p-4 bg-slate-900 border border-white/10 hover:border-sky-500/40 transition"
-             href="/JasonPerezCV.pdf" download>
-            Télécharger le CV
-          </a>
-          <a className="rounded-xl p-4 bg-slate-900 border border-white/10 hover:border-sky-500/40 transition"
-             href="https://www.linkedin.com/in/jason-perez-68182725a/" target="_blank" rel="noreferrer">
-            LinkedIn
-          </a>
-          <a className="rounded-xl p-4 bg-slate-900 border border-white/10 hover:border-sky-500/40 transition"
-             href="https://github.com/Jason2EPITA" target="_blank" rel="noreferrer">
-            GitHub
-          </a>
+        <div className="w-full h-screen">
+          <AvatarRoom onReady={() => setReady(true)} />
         </div>
-      </main>
+      </div>
 
-      <footer className="mx-auto max-w-6xl px-6 py-10 text-sm text-slate-400">
-        © {new Date().getFullYear()} Jason Perez — Portfolio
-      </footer>
+      {/* Section 2 → la nouvelle "scène" */}
+      <div
+        ref={cvSectionRef}
+        className="relative min-h-screen flex items-center justify-center bg-white"
+      >
+        {cvVisible && <AvatarCV />} {/* ne monte AvatarCV qu’à ce moment */}
+      </div>
     </div>
   );
 }
