@@ -1,9 +1,11 @@
+// App.jsx
 import { useEffect, useState, useRef } from "react";
 import AvatarRoom from "./components/AvatarRoom";
 import AvatarCV from "./components/AvatarCV";
 import ScrollDownArrow from "./components/ScrollDownArrow";
 import ContactSection from "./components/ContactSection";
 import Spline from "@splinetool/react-spline";
+import HomeMenu from "./components/HomeMenu"; // 🔹 le nouveau composant
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -11,6 +13,7 @@ export default function App() {
   const [cvVisible, setCvVisible] = useState(false);
   const [contactVisible, setContactVisible] = useState(false);
 
+  const presentationRef = useRef(null);
   const cvSectionRef = useRef(null);
   const contactSectionRef = useRef(null);
 
@@ -24,37 +27,34 @@ export default function App() {
   // Observer pour AvatarCV
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setCvVisible(true);
-        }
-      },
+      (entries) => setCvVisible(entries[0].isIntersecting),
       { threshold: 0.4 }
     );
     if (cvSectionRef.current) observer.observe(cvSectionRef.current);
-    return () => {
-      if (cvSectionRef.current) observer.unobserve(cvSectionRef.current);
-    };
+    return () => observer.disconnect();
   }, []);
 
   // Observer pour Contact (Spline)
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setContactVisible(true);
-        }
-      },
+      (entries) => setContactVisible(entries[0].isIntersecting),
       { threshold: 0.4 }
     );
     if (contactSectionRef.current) observer.observe(contactSectionRef.current);
-    return () => {
-      if (contactSectionRef.current) observer.unobserve(contactSectionRef.current);
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
     <div className="min-h-screen relative">
+      {/* Bouton Accueil */}
+      <HomeMenu
+        scrollToRefs={{
+          presentation: presentationRef,
+          cv: cvSectionRef,
+          contact: contactSectionRef,
+        }}
+      />
+
       {/* Loader */}
       {loading && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0f172a] text-white text-4xl font-bold">
@@ -74,8 +74,11 @@ export default function App() {
         </div>
       )}
 
-      {/* Section 1 */}
-      <div className="relative grid grid-cols-1 md:grid-cols-2 min-h-screen">
+      {/* Section 1 : Présentation */}
+      <div
+        ref={presentationRef}
+        className="relative grid grid-cols-1 md:grid-cols-2 min-h-screen"
+      >
         <div className="flex flex-col justify-center items-start p-10 bg-[#dcdcff]">
           <p className="text-lg text-slate-700">Hello, my name is</p>
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900">
@@ -107,16 +110,11 @@ export default function App() {
       </div>
 
       {/* Section 3 → Contact avec Spline */}
-      <div
-        ref={contactSectionRef}
-        className="relative min-h-screen"
-      >
-        {/* Monte la scène Spline uniquement quand visible */}
+      <div ref={contactSectionRef} className="relative min-h-screen">
         {contactVisible && (
           <Spline scene="https://prod.spline.design/QcDpRKMG-PppExkb/scene.splinecode" />
         )}
 
-        {/* Formulaire superposé */}
         <div className="absolute inset-0 flex items-center justify-center z-10">
           <ContactSection />
         </div>
