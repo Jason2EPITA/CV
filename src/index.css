@@ -69,6 +69,8 @@ button:focus-visible {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+body {
+  background: #E4E4FF; /* une couleur claire au lieu du noir par défaut */
+}
 :root { color-scheme: dark; }
 html, body, #root { height: 100%; }
