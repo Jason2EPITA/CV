@@ -2,6 +2,8 @@
 import { useEffect, useState, useRef } from "react";
 import AvatarRoom from "./components/AvatarRoom";
 import AvatarCV from "./components/AvatarCV";
+import ScrollDownArrow from "./components/ScrollDownArrow";
+import ContactSection from "./components/ContactSection";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -58,22 +60,30 @@ export default function App() {
         </div>
       )}
 
-      {/* Section 1 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen">
-        <div className="flex flex-col justify-center items-start p-10 bg-[#dcdcff]">
-          <p className="text-lg text-slate-700">Hello, my name is</p>
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900">
-            Jason Perez
-          </h1>
-          <h2 className="text-3xl md:text-4xl font-semibold text-slate-800 mt-2">
-            I am a Software Engineer.
-          </h2>
-          <p className="mt-4 text-slate-600">AI & Data • EPITA (SCIA)</p>
-        </div>
-        <div className="w-full h-screen">
-          <AvatarRoom onReady={() => setReady(true)} />
-        </div>
+    {/* Section 1 */}
+    <div className="relative grid grid-cols-1 md:grid-cols-2 min-h-screen">
+      <div className="flex flex-col justify-center items-start p-10 bg-[#dcdcff]">
+        <p className="text-lg text-slate-700">Hello, my name is</p>
+        <h1 className="text-4xl md:text-5xl font-bold text-slate-900">
+          Jason Perez
+        </h1>
+        <h2 className="text-3xl md:text-4xl font-semibold text-slate-800 mt-2">
+          I am a Software Engineer.
+        </h2>
+        <p className="mt-4 text-slate-600">AI & Data • EPITA (SCIA)</p>
       </div>
+
+      <div className="w-full h-screen">
+        <AvatarRoom onReady={() => setReady(true)} />
+      </div>
+
+      {/* Flèche réutilisable */}
+      <ScrollDownArrow
+        onClick={() =>
+          cvSectionRef.current?.scrollIntoView({ behavior: "smooth" })
+        }
+      />
+    </div>
 
       {/* Section 2 → la nouvelle "scène" */}
       <div
@@ -81,6 +91,11 @@ export default function App() {
         className="relative min-h-screen flex items-center justify-center bg-white"
       >
         {cvVisible && <AvatarCV />} {/* ne monte AvatarCV qu’à ce moment */}
+      </div>
+
+      {/* Section 3 → Contact */}
+      <div className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-indigo-100">
+        <ContactSection/>
       </div>
     </div>
   );
