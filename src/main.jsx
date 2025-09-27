@@ -1,7 +1,7 @@
 // src/main.jsx
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 import App from "./App";
 import PolitiqueConfidentialiteCleanSwipe from "./pages/PolitiqueConfidentialiteCleanSwipe";
@@ -11,7 +11,7 @@ import "./globals.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         {/* Page principale */}
         <Route path="/" element={<App />} />
@@ -22,6 +22,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           element={<PolitiqueConfidentialiteCleanSwipe />}
         />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );
