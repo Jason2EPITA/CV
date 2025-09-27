@@ -44,7 +44,7 @@ export default function PolitiqueConfidentialiteCleanSwipe() {
             href="mailto:contact@jasonperez.fr"
             className="text-blue-600 underline"
           >
-            contact@cleanswipe.com
+            contact@jasonperez.fr
           </a>
         </p>
 
