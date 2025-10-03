@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 import { HashRouter, Routes, Route } from "react-router-dom";
 
 import App from "./App";
-import PolitiqueConfidentialiteCleanSwipe from "./pages/PolitiqueConfidentialiteCleanSwipe";
+import PolitiqueConfidentialiteCleanSnap from "./pages/PolitiqueConfidentialiteCleanSnap";
 
 import "./index.css";
 import "./globals.css";
@@ -18,8 +18,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
         {/* Page politique de confidentialité */}
         <Route
-          path="/politiqueconfidentialitecleanswipe"
-          element={<PolitiqueConfidentialiteCleanSwipe />}
+          path="/politiqueconfidentialitecleansnap"
+          element={<PolitiqueConfidentialiteCleanSnap />}
         />
       </Routes>
     </HashRouter>

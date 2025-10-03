@@ -1,24 +1,24 @@
 import { useEffect } from "react";
 
-export default function PolitiqueConfidentialiteCleanSwipe() {
+export default function PolitiqueConfidentialiteCleanSnap() {
   useEffect(() => {
-    document.title = "Politique de confidentialité – CleanSwipe";
+    document.title = "Politique de confidentialité – CleanSnap";
   }, []);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white text-gray-800 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl w-full">
         <h1 className="text-4xl font-bold mb-6 text-center">
-          Politique de confidentialité – CleanSwipe
+          Politique de confidentialité – CleanSnap
         </h1>
 
         <p className="mb-6">
-          L'application <strong>CleanSwipe</strong> respecte la vie privée de ses utilisateurs. Nous ne collectons aucune donnée personnelle. Toutes vos photos et vidéos restent uniquement sur votre appareil. Aucun transfert de données n'est effectué vers des serveurs ou des tiers.
+          L'application <strong>CleanSnap</strong> respecte la vie privée de ses utilisateurs. Nous ne collectons aucune donnée personnelle. Toutes vos photos et vidéos restent uniquement sur votre appareil. Aucun transfert de données n'est effectué vers des serveurs ou des tiers.
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-2">1. Données collectées</h2>
         <p className="mb-4">
-          Aucune donnée personnelle n'est collectée par l'application. CleanSwipe fonctionne entièrement hors ligne.
+          Aucune donnée personnelle n'est collectée par l'application. CleanSnap fonctionne entièrement hors ligne.
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-2">2. Accès à vos fichiers</h2>
@@ -28,7 +28,7 @@ export default function PolitiqueConfidentialiteCleanSwipe() {
 
         <h2 className="text-2xl font-semibold mt-8 mb-2">3. Publicités et tiers</h2>
         <p className="mb-4">
-          CleanSwipe n'affiche pas de publicités et ne partage aucune information avec des services tiers.
+          CleanSnap n'affiche pas de publicités et ne partage aucune information avec des services tiers.
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-2">4. Mises à jour</h2>
