@@ -8,73 +8,80 @@ export default function ConditionsUtilisationGbesoin() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-white text-gray-800 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl w-full">
-        <h1 className="text-4xl font-bold mb-6 text-center">
-          Conditions d'utilisation – Gbesoin
-        </h1>
+        <h1 className="text-4xl font-bold mb-2 text-center">Conditions d'utilisation</h1>
+        <p className="text-center text-sm text-gray-500 mb-8"><strong>Dernière mise à jour : jeudi 28 avril 2026</strong></p>
 
-        <p className="mb-6">
-          Les présentes conditions générales d'utilisation (ci-après « CGU ») encadrent l'utilisation de l'application <strong>Gbesoin</strong>. En téléchargeant ou en utilisant l'application, vous acceptez sans réserve les présentes CGU.
-        </p>
-
-        <h2 className="text-2xl font-semibold mt-8 mb-2">1. Objet de l'application</h2>
+        <h2 className="text-2xl font-semibold mt-8 mb-2">1. Acceptation</h2>
         <p className="mb-4">
-          Gbesoin est une application mobile permettant de gérer une liste de courses, de classer les articles par catégories et de recevoir des rappels lorsque vous vous trouvez à proximité d'un magasin pertinent.
+          En téléchargeant et en utilisant l'application <strong>Gbesoin</strong>, vous acceptez les présentes conditions d'utilisation. Si vous n'acceptez pas ces conditions, n'utilisez pas l'application.
         </p>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-2">2. Accès au service</h2>
+        <h2 className="text-2xl font-semibold mt-8 mb-2">2. Description du service</h2>
         <p className="mb-4">
-          L'application est mise à disposition gratuitement. L'utilisateur reste responsable du matériel, de la connexion Internet et des coûts éventuels liés à son opérateur.
+          Gbesoin est une application de liste de courses qui détecte automatiquement la catégorie de vos articles et vous envoie des rappels lorsque vous passez à proximité de magasins pertinents.
         </p>
-
-        <h2 className="text-2xl font-semibold mt-8 mb-2">3. Utilisation correcte</h2>
         <p className="mb-4">
-          L'utilisateur s'engage à utiliser Gbesoin conformément à sa finalité, à ne pas tenter de la décompiler, modifier ou détourner, et à ne pas l'utiliser à des fins illégales.
+          L'application fonctionne <strong>entièrement en local</strong> sur votre iPhone et ne nécessite pas de compte utilisateur.
         </p>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-2">4. Propriété intellectuelle</h2>
+        <h2 className="text-2xl font-semibold mt-8 mb-2">3. Licence</h2>
         <p className="mb-4">
-          L'application, son code, son design, ses logos et l'ensemble de ses contenus sont la propriété exclusive de leur auteur. Toute reproduction, totale ou partielle, est interdite sans autorisation écrite préalable.
+          Nous vous accordons une licence personnelle, non-exclusive, non-transférable, révocable, pour utiliser l'application sur les appareils que vous possédez ou contrôlez, conformément aux règles d'utilisation de l'App Store d'Apple.
         </p>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-2">5. Responsabilité</h2>
+        <h2 className="text-2xl font-semibold mt-8 mb-2">4. Utilisation acceptable</h2>
+        <p className="mb-2">Vous vous engagez à ne pas :</p>
+        <ul className="list-disc list-inside mb-4 space-y-1">
+          <li>Tenter de désassembler, décompiler ou rétro-concevoir l'application.</li>
+          <li>Utiliser l'application à des fins illégales.</li>
+          <li>Distribuer, vendre ou louer l'application.</li>
+          <li>Contourner les mesures de sécurité de l'application ou de votre appareil.</li>
+        </ul>
+
+        <h2 className="text-2xl font-semibold mt-8 mb-2">5. Propriété intellectuelle</h2>
         <p className="mb-4">
-          Gbesoin est fournie « telle quelle ». L'éditeur ne saurait être tenu responsable d'éventuels dysfonctionnements, pertes de données, ou conséquences résultant de l'utilisation de rappels de localisation. Les rappels et suggestions sont donnés à titre indicatif.
+          L'application, son code, son design, ses textes et ses ressources graphiques sont la propriété exclusive de <strong>Jason Perez (auto-entrepreneur)</strong>. Toute reproduction non autorisée est interdite.
         </p>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-2">6. Disponibilité</h2>
+        <h2 className="text-2xl font-semibold mt-8 mb-2">6. Limitations de responsabilité</h2>
+        <p className="mb-2">L'application est fournie « telle quelle », sans garantie d'aucune sorte. Nous ne garantissons pas :</p>
+        <ul className="list-disc list-inside mb-4 space-y-1">
+          <li>Que les rappels seront envoyés en toutes circonstances (dépend de la disponibilité de la localisation, de la batterie, du système iOS).</li>
+          <li>Que les magasins détectés seront toujours ouverts ou disponibles.</li>
+          <li>Que la classification automatique des articles sera toujours exacte.</li>
+        </ul>
         <p className="mb-4">
-          L'éditeur s'efforce de maintenir l'application accessible mais ne garantit pas une disponibilité continue. Le service peut être interrompu pour maintenance ou mise à jour.
+          Vous restez responsable de la vérification finale de vos achats. Nous ne pourrons être tenus responsables d'oublis, d'erreurs de catégorisation ou d'éventuelles conséquences liées à l'utilisation de l'application.
         </p>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-2">7. Données personnelles</h2>
+        <h2 className="text-2xl font-semibold mt-8 mb-2">7. Données de localisation et batterie</h2>
         <p className="mb-4">
-          Le traitement des données personnelles est détaillé dans la <a href="#/politiqueconfidentialitegbesoin" className="text-blue-600 underline">politique de confidentialité</a>.
+          L'utilisation continue de la localisation peut consommer davantage de batterie. Vous pouvez ajuster ou désactiver cette fonctionnalité dans les Réglages iOS à tout moment.
         </p>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-2">8. Évolution des CGU</h2>
+        <h2 className="text-2xl font-semibold mt-8 mb-2">8. Mises à jour</h2>
         <p className="mb-4">
-          Les présentes CGU peuvent être modifiées à tout moment. La version applicable est celle en vigueur lors de votre utilisation de l'application.
+          Nous nous réservons le droit de modifier ou de mettre à jour l'application à tout moment. Certaines mises à jour peuvent être nécessaires pour la sécurité ou la compatibilité.
         </p>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-2">9. Droit applicable</h2>
+        <h2 className="text-2xl font-semibold mt-8 mb-2">9. Résiliation</h2>
         <p className="mb-4">
-          Les présentes CGU sont soumises au droit français. Tout litige relatif à leur interprétation ou exécution relèvera des tribunaux compétents.
+          Vous pouvez cesser d'utiliser l'application à tout moment en la désinstallant. Nous nous réservons le droit de retirer l'application de l'App Store sans préavis.
         </p>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-2">10. Contact</h2>
+        <h2 className="text-2xl font-semibold mt-8 mb-2">10. Droit applicable</h2>
         <p className="mb-4">
-          Pour toute question relative aux présentes conditions, vous pouvez nous contacter à l'adresse :
-          <br />
-          <a
-            href="mailto:info.shoppexpress@gmail.com"
-            className="text-blue-600 underline"
-          >
-            info.shoppexpress@gmail.com
-          </a>
+          Les présentes conditions sont régies par le <strong>droit français</strong>. Tout litige sera soumis aux <strong>tribunaux français compétents</strong>.
         </p>
 
-        <p className="text-sm text-gray-500 mt-8">
-          Dernière mise à jour : 28 avril 2026
+        <h2 className="text-2xl font-semibold mt-8 mb-2">11. Contact</h2>
+        <p className="mb-4">
+          Pour toute question :{" "}
+          <strong>
+            <a href="mailto:support@gbesoin.app" className="text-blue-600 underline">
+              support@gbesoin.app
+            </a>
+          </strong>
         </p>
       </div>
     </div>
